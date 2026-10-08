@@ -3,7 +3,7 @@ title: "冻结队的第四人：沃雅妮莎能为甘雨补上什么"
 date: "2026-10-09"
 excerpt: "甘雨 + 爱可菲 + 芙宁娜 的骨架已经很好看了，可第四个人到底该补什么？7.1 上线的沃雅妮莎一次填了四个坑——但也不是没有代价。"
 tags: ["攻略心得"]
-cover: "/images/cover-7.jpg"
+cover: "/images/cover-7-voya.jpg"
 author: "月海亭书童"
 ---
 
