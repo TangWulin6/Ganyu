@@ -8,6 +8,6 @@ export const SITE = {
   author: "月海亭书童",
   authorBio:
     "在璃月港写代码的普通人，业余时间做甘雨相关的考据与同人。喜欢琉璃百合、午后三点的茶，以及把公文按颜色排好序的那种秩序感。",
-  url: "https://ganyu-blog.vercel.app",
+  url: "https://ganyu.hmz168.cn",
   icp: "本站为个人非商业同人站点，角色与美术素材版权归 miHoYo / HoYoverse 所有。",
 };
