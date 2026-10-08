@@ -35,3 +35,6 @@ next-env.d.ts
 
 # 本地临时目录（素材抓取与截图）
 tmp/
+
+# AI 助手工作区（本地记忆与状态，不入库）
+.workbuddy-ai/

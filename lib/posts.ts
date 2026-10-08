@@ -212,22 +212,42 @@ export type PaginatedPosts = {
   totalPosts: number;
 };
 
-export function paginatePosts(page: number): PaginatedPosts {
-  const all = getPostMetas();
-  const totalPages = Math.max(1, Math.ceil(all.length / POSTS_PER_PAGE));
-  const safePage = Math.min(Math.max(1, page), totalPages);
-  const start = (safePage - 1) * POSTS_PER_PAGE;
+/**
+ * 置顶文章（pinned: true）会被提到第一页最前，并以大卡（feature）单独渲染。
+ * 关键点：大卡不占用网格名额，否则网格会少一篇、在 2 列布局下留下半行。
+ *
+ *   - 第 1 页 = 全部置顶文章 + 前 POSTS_PER_PAGE 篇普通文章（大卡 + 满格网格）
+ *   - 第 2 页起 = 每页 POSTS_PER_PAGE 篇普通文章
+ *
+ * 由此无论是否存在置顶，文章网格始终是 POSTS_PER_PAGE 的整数倍，布局保持整齐。
+ */
+function paginate(all: PostMeta[], page: number): PaginatedPosts {
+  const pinned = all.filter((p) => p.pinned);
+  const regular = all.filter((p) => !p.pinned);
 
-  return {
-    items: all.slice(start, start + POSTS_PER_PAGE),
-    page: safePage,
-    totalPages,
-    totalPosts: all.length,
-  };
+  const totalPages = Math.max(
+    1,
+    Math.ceil(Math.max(0, regular.length - POSTS_PER_PAGE) / POSTS_PER_PAGE) + 1,
+  );
+  const safePage = Math.min(Math.max(1, page), totalPages);
+
+  const items =
+    safePage === 1
+      ? [...pinned, ...regular.slice(0, POSTS_PER_PAGE)]
+      : regular.slice(
+          POSTS_PER_PAGE + (safePage - 2) * POSTS_PER_PAGE,
+          POSTS_PER_PAGE + (safePage - 1) * POSTS_PER_PAGE,
+        );
+
+  return { items, page: safePage, totalPages, totalPosts: all.length };
+}
+
+export function paginatePosts(page: number): PaginatedPosts {
+  return paginate(getPostMetas(), page);
 }
 
 export function getTotalPages(): number {
-  return Math.max(1, Math.ceil(getPostMetas().length / POSTS_PER_PAGE));
+  return paginate(getPostMetas(), 1).totalPages;
 }
 
 export function formatDate(iso: string): string {

@@ -15,9 +15,10 @@ type Props = {
 export default function PostList({ data, hrefFor, title, subtitle }: Props) {
   const { items, page, totalPages, totalPosts } = data;
 
-  // 置顶文章只在第一页以大卡形式突出显示
-  const feature = page === 1 ? items.find((p) => p.pinned) : undefined;
-  const rest = feature ? items.filter((p) => p.slug !== feature.slug) : items;
+  // 置顶文章只在第一页以大卡形式突出显示（支持多篇置顶）
+  // 大卡不占用网格名额：网格始终渲染普通文章，保持 2 列布局整齐。
+  const features = page === 1 ? items.filter((p) => p.pinned) : [];
+  const rest = features.length > 0 ? items.filter((p) => !p.pinned) : items;
 
   return (
     <section id="latest">
@@ -28,11 +29,11 @@ export default function PostList({ data, hrefFor, title, subtitle }: Props) {
         </span>
       </div>
 
-      {feature && (
-        <div style={{ marginBottom: 24 }}>
-          <PostCard post={feature} variant="feature" priority />
+      {features.map((post) => (
+        <div key={post.slug} style={{ marginBottom: 24 }}>
+          <PostCard post={post} variant="feature" priority />
         </div>
-      )}
+      ))}
 
       <div className="post-grid">
         {rest.map((post) => (
