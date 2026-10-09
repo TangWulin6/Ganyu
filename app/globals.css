@@ -423,7 +423,7 @@ h4 {
 
 @media (min-width: 900px) {
   .hero__inner {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
     align-items: center;
     min-height: 520px;
     padding: 40px 0 48px;
@@ -516,7 +516,7 @@ h4 {
 }
 
 .hero__art img {
-  width: min(100%, 620px);
+  width: min(100%, 640px);
   height: auto;
   filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.45));
   animation: float 7s ease-in-out infinite;

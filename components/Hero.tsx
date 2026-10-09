@@ -60,12 +60,12 @@ export default function Hero() {
 
         <div className="hero__art">
           <Image
-            src="/images/hero-splash.png"
+            src="/images/hero-ganyu.webp"
             alt="甘雨 · 冰元素"
-            width={1600}
-            height={800}
+            width={1300}
+            height={1145}
             priority
-            sizes="(max-width: 900px) 92vw, 620px"
+            sizes="(max-width: 900px) 92vw, 660px"
           />
         </div>
       </div>

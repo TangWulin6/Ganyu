@@ -28,13 +28,13 @@ export const metadata: Metadata = {
     siteName: SITE.fullName,
     title: SITE.fullName,
     description: SITE.description,
-    images: [{ url: "/images/hero-splash.png", width: 1600, height: 800 }],
+    images: [{ url: "/images/og-ganyu.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: SITE.fullName,
     description: SITE.description,
-    images: ["/images/hero-splash.png"],
+    images: ["/images/og-ganyu.jpg"],
   },
   robots: { index: true, follow: true },
   alternates: {
