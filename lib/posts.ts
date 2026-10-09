@@ -141,7 +141,7 @@ function readAll(): Post[] {
         excerpt: data.excerpt ?? "",
         tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
         cover: data.cover ?? "/images/cover-1.jpg",
-        author: data.author ?? "月海亭书童",
+        author: data.author ?? "HMZ",
         readingTime: estimateReadingTime(content),
         pinned: Boolean(data.pinned),
       };

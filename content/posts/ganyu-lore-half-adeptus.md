@@ -4,7 +4,7 @@ date: "2026-09-18"
 excerpt: "麒麟与人的孩子，究竟算哪一边？从璃月典籍、角色故事与「循循守月」的立绘文案出发，梳理甘雨身世设定里那些容易被忽略的细节。"
 tags: ["角色考据", "璃月风物"]
 cover: "/images/cover-1.jpg"
-author: "月海亭书童"
+author: "HMZ"
 pinned: true
 ---
 

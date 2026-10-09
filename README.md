@@ -15,7 +15,7 @@
 | `/tags/[tag]`                | 按标签筛选的文章列表                             | SSG            |
 | `/about`                     | 关于页：站点定位、技术实现、素材来源与版权声明                | 静态生成           |
 | `/api/posts`                 | 全站文章 JSON API（唯一 Route Handler）        | `force-static` |
-| `/feed.xml`                  | RSS 订阅                                 | `force-static` |
+| `/feed.xml`                  | RSS 2.0 订阅（全文输出）                       | `force-static` |
 | `/sitemap.xml`、`/robots.txt` | SEO                                    | 静态生成           |
 | `*`                          | 404 页                                  | 静态生成           |
 
@@ -29,6 +29,7 @@
 - **置顶文章**：`pinned: true` 的文章提到第一页最前，以大卡（feature）单独展示，且**不占用网格名额**——第一页网格仍为 6 篇，保证 2 列布局始终整齐
 - **响应式**：移动端汉堡抽屉导航，1024px 以下侧边栏下沉，文章页 1080px 以下隐藏目录
 - **站点图标**：`app/icon.svg`（矢量，主流浏览器）+ `app/favicon.ico`（16/32/48 多尺寸）+ `app/apple-icon.png`（180×180），走 App Router 文件约定自动注入，无需手写 `<link>`
+- **RSS 订阅**：`/feed.xml` 输出 RSS 2.0，含 `<content:encoded>` 全文、`<dc:creator>` 作者、封面 `<enclosure>`、频道 `<image>` 与 `<ttl>`；正文里的站内相对路径会补成绝对地址（阅读器不加载站点 CSS），元素顺序遵循规范，`Content-Type` 为 `application/rss+xml`
 
 ---
 
@@ -105,7 +106,7 @@ date: "2026-09-27"
 excerpt: "列表页与 SEO 用的摘要。"
 tags: ["角色考据", "璃月风物"]
 cover: "/images/cover-1.jpg"
-author: "月海亭书童"
+author: "HMZ"
 pinned: false
 ---
 
@@ -206,6 +207,7 @@ Route (app)
 | `namecard.png`    | 甘雨·麟迹 官方名片                  |
 | `cover-1…6.jpg`   | 官方生日贺图与节日贺图（2021–2025）      |
 | `cover-7-voya.jpg` | 沃雅妮莎官方抽卡立绘（透明背景，2048×1024 原图，衬深靛底裁切） |
+| `feed-logo.png`   | RSS 频道图标（144×144，由站点图标缩放，**项目自制非官方素材**） |
 
 > **版权声明**：本站为个人非商业同人博客，与米哈游（miHoYo / HoYoverse）无任何隶属或合作关系。《原神》及其角色形象、美术素材版权归米哈游所有。本站不提供素材下载，不用于任何商业用途。
 >
